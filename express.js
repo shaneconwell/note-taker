@@ -26,12 +26,17 @@ app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'public/notes.
 
 app.get('/api/notes', (req, res) => res.json(notes));
 
+// app.get('/api/notes/:id', (req, res) => {
+//     for (let i = 0; i < notes.length; i++) {
+//     res.json(notes[i].id)
+//     }
+// });
 
 // FETCH routes
 
 app.post('/api/notes', (req, res) => {
     const newNote = req.body;
-    newNote.noteID = id;
+    newNote.id = id;
     dbParse.push(newNote);
     // console.log(newNote);
     let note = JSON.stringify(dbParse,null,2)
@@ -40,7 +45,7 @@ app.post('/api/notes', (req, res) => {
     err ? console.error(err) : console.log('Commit logged!')
     )
     
-    res.send("OK")
+
 });
 
 
